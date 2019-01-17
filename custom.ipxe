@@ -9,7 +9,7 @@
 clear custom_choice
 menu This is a Test Menu
 item --gap This is the first sub menu
-item option_one ${space} Loading a kernel and initrd
+item clonezilla86 ${space} Loading a kernel and initrd
 item option_two ${space} Loading an ISO
 item --gap This is a second sub menu
 item option_three ${space} Loads another custom sub menu
@@ -22,7 +22,7 @@ goto custom_exit
 
 :clonezilla86
 set clonezilla_version 2.5.6-22
-set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/${clonezilla_version}/clonezilla-live-${clonezilla_version}-i686.iso/download
+set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/$20160210-wily/clonezilla-live-$20160210-wily-i686.iso/download
 set util_file clonezilla-live-${clonezilla_version}-i686.iso
 goto boot_memdisk
 
@@ -31,6 +31,12 @@ set clonezilla_version 2.5.6-22
 set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/${clonezilla_version}/clonezilla-live-${clonezilla_version}-i686.iso/download
 set util_file clonezilla-live-${clonezilla_version}-i686.iso
 goto boot_memdisk
+
+:option_two
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://path.to/iso
+boot || goto custom_exit
+
 
 :start
 echo Hello world!
