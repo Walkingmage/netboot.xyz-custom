@@ -10,10 +10,10 @@ clear custom_choice
 menu This is a Test Menu
 item --gap This is the first sub menu
 item clonezilla86 ${space} Loading a kernel and initrd
-item option_two ${space} Loading an clonezilla ISO
-item --gap This is a second sub menu
-item option_three ${space} Loads clonezilla 2
-item option_four ${space} This is option four
+###item option_two ${space} Loading an clonezilla ISO
+###item --gap This is a second sub menu
+###item option_three ${space} Loads clonezilla 2
+###item option_four ${space} This is option four
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -21,18 +21,6 @@ goto custom_exit
 
 
 :clonezilla86
-set clonezilla_version 2.5.6-22
-set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/$20160210-wily/clonezilla-live-$20160210-wily-i686.iso/download
-set util_file clonezilla-live-${clonezilla_version}-i686.iso
-goto boot_memdisk
-
-:option_two
-set clonezilla_version 2.5.6-22
-set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/${clonezilla_version}/clonezilla-live-${clonezilla_version}-i686.iso/download
-set util_file clonezilla-live-${clonezilla_version}-i686.iso
-goto boot_memdisk
-
-:option_three
 kernel https://boot.netboot.xyz/memdisk raw iso
 initrd https://downloads.sourceforge.net/project/clonezilla/clonezilla_live_stable/2.6.0-37/clonezilla-live-2.6.0-37-i686.iso?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fclonezilla%2Ffiles%2Fclonezilla_live_stable%2F2.6.0-37%2Fclonezilla-live-2.6.0-37-i686.iso%2Fdownload%3Fuse_mirror%3Dkent&ts=1547751097
 boot || goto custom_exit
