@@ -4,7 +4,29 @@
 ###
 
 
+
+:custom
+clear custom_choice
+menu This is a Test Menu
+item --gap This is the first sub menu
+item option_one ${space} Loading a kernel and initrd
+item option_two ${space} Loading an ISO
+item --gap This is a second sub menu
+item option_three ${space} Loads another custom sub menu
+item option_four ${space} This is option four
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
+goto custom_exit
+
+
 :clonezilla86
+set clonezilla_version 2.5.6-22
+set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/${clonezilla_version}/clonezilla-live-${clonezilla_version}-i686.iso/download
+set util_file clonezilla-live-${clonezilla_version}-i686.iso
+goto boot_memdisk
+
+:option_two
 set clonezilla_version 2.5.6-22
 set util_path sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/${clonezilla_version}/clonezilla-live-${clonezilla_version}-i686.iso/download
 set util_file clonezilla-live-${clonezilla_version}-i686.iso
